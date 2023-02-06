@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{ layout/layout }">
+
+<!--/* 메인 컨텐트가 삽입될 위치 */-->
+<div layout:fragment="content">
+	<div class="content_box">
+	<section class="page_info_wrap">
+		<div class="page_title">회원가입</div>
+		<ul class="breadcrumb">
+			<li><a href="/w_main">홈</a></li>
+			<li><a href="/user/w_memberJoin">회원가입</a></li>
+		</ul>
+	</section>
+
+	<section class="mypage_wrap">
+		<div class="member_form">
+			<div class="input_info_wrap">
+				<div class="title_wrap">
+					<span class="title">정보 입력</span> <span class="desc">*필수사항 입니다.</span>
+				</div>
+				<div class="item_wrap">
+					<label class="item_label">이름<span class="icon_required">*</span></label>
+					<div class="item_content">
+						<input type="text" name="name" id="nameJoin" class="input_text" placeholder="이름을 입력해주세요."
+							required maxlength="10">
+					</div>
+				</div>
+				<div class="item_wrap">
+					<label class="item_label">아이디<span class="icon_required">*</span></label>
+					<div class="item_content">
+						<input type="text" class="input_text" name="webId" id="webIdJoin"
+							placeholder="영문, 숫자 조합으로 6~20글자를 입력해주세요." required maxlength="20">
+						<button class="btn_check_id" onclick="clickCheckDuplication()">중복체크</button>
+					</div>
+				</div>
+				<div class="item_wrap">
+					<label class="item_label">비밀번호<span class="icon_required">*</span></label>
+					<div class="item_content">
+						<input type="password" class="input_text" name="pass" id="passJoin"
+							placeholder="영문, 숫자, 특수문자 ! @ # $ & * 조합으로 8~20 글자 내외" required maxlength="20"> <input
+							type="password" class="input_text left_margin" name="passCheck" id="passCheckJoin"
+							placeholder="비밀번호를 한번 더 입력해주세요." required maxlength="20">
+					</div>
+				</div>
+				<div class="item_wrap">
+					<label class="item_label">이메일<span class="icon_required">*</span></label>
+					<div class="item_content">
+						<input type="text" class="input_text" name="email" id="emailJoin" placeholder="이메일 입력을 입력해주세요.">
+					</div>
+				</div>
+				<div class="item_wrap">
+					<label class="item_label">전화번호</label>
+					<div class="item_content">
+						<div class="phone_wrap">
+							<div class="select_wrap">
+								<select name="tell1" id="tell1Join" onchange="changeTell()">
+									<option value="choice" disabled selected>선택해주세요.</option>
+									<option value="0">없음</option>
+									<option value="02">02</option>
+									<option value="031">031</option>
+									<option value="032">032</option>
+									<option value="033">033</option>
+									<option value="041">041</option>
+									<option value="042">042</option>
+									<option value="043">043</option>
+									<option value="051">051</option>
+									<option value="052">052</option>
+									<option value="053">053</option>
+									<option value="054">054</option>
+									<option value="055">055</option>
+									<option value="061">061</option>
+									<option value="062">062</option>
+									<option value="063">063</option>
+									<option value="064">064</option>
+								</select>
+							</div>
+							<input type="text" class="input_text" name=tell2 id=tell2Join maxlength="4" style="display:none"> <input type="text"
+								class="input_text" name = tell3 id=tell3Join maxlength="4" style="display:none">
+						</div>
+					</div>
+				</div>
+				<div class="item_wrap">
+					<label class="item_label">휴대폰<span class="icon_required">*</span></label>
+					<div class="item_content">
+						<div class="phone_wrap">
+							<div class="select_wrap">
+								<select name="phone1" id="phone1Join" onchange="$('#phone2Join').focus()">
+									<option value="010">010</option>
+									<option value="011">011</option>
+									<option value="016">016</option>
+									<option value="017">017</option>
+									<option value="018">018</option>
+									<option value="019">019</option>
+								</select>
+							</div>
+							<input type="text" class="input_text" name="phone2" id="phone2Join" maxlength="4"> <input type="text"
+								class="input_text" name="phone3" id="phone3Join" maxlength="4">
+						</div>
+						<button class="btn_request_num" onclick="sendCertNumberJoin()">인증 번호 발송</button>
+					</div>
+				</div>
+				<div class="item_wrap">
+					<label class="item_label">인증번호<span class="icon_required">*</span></label>
+					<div class="item_content">
+						<input type="text" name="valid" id="validJoin" class="input_text" placeholder="인증 번호를 발송해주세요." maxlength="6" disabled
+							required>
+						<button class="btn_check_certify" id="vaildCheck" onclick="clickValidJoin()" style="display: none">인증확인</button>
+						<label class="item_label" id="labelComplete" style="display: none">인증 완료</label>
+					</div>
+				</div>
+				<div class="item_wrap">
+					<label class="item_label">생년월일</label>
+					<div class="item_content">
+						<div class="radio_wrap">
+							<label class="custom-radio1"> <input type="radio"
+								name="birthday" id="lunarJoin" value="S" checked> <span class="checkmark"></span>
+								<div>
+									<div class="text" >양력</div>
+								</div>
+							</label> <label class="custom-radio1"> <input type="radio"
+								name="birthday" id="lunarJoin" value="L"> <span class="checkmark"></span>
+								<div>
+									<div class="text">음력</div>
+								</div>
+							</label>
+						</div>
+						 <div class="date_wrap">
+								<div class="select_wrap">
+									<select name="chYear" id="chYearJoin"
+										onchange="changeCalendar('#chYearJoin','#chMonthJoin','#chDayJoin')">
+										<option value="a" selected="">-------</option>
+										<option value="1900" selected="">1900년</option>
+										<option value="1901" selected="">1901년</option>
+										<option value="1902" selected="">1902년</option>
+										<option value="1903" selected="">1903년</option>
+										<option value="1904" selected="">1904년</option>
+										<option value="1905" selected="">1905년</option>
+										<option value="1906" selected="">1906년</option>
+										<option value="1907" selected="">1907년</option>
+										<option value="1908" selected="">1908년</option>
+										<option value="1909" selected="">1909년</option>
+										<option value="1910" selected="">1910년</option>
+										<option value="1911" selected="">1911년</option>
+										<option value="1912" selected="">1912년</option>
+										<option value="1913" selected="">1913년</option>
+										<option value="1914" selected="">1914년</option>
+										<option value="1915" selected="">1915년</option>
+										<option value="1916" selected="">1916년</option>
+										<option value="1917" selected="">1917년</option>
+										<option value="1918" selected="">1918년</option>
+										<option value="1919" selected="">1919년</option>
+										<option value="1920" selected="">1920년</option>
+										<option value="1921" selected="">1921년</option>
+										<option value="1922" selected="">1922년</option>
+										<option value="1923" selected="">1923년</option>
+										<option value="1924" selected="">1924년</option>
+										<option value="1925" selected="">1925년</option>
+										<option value="1926" selected="">1926년</option>
+										<option value="1927" selected="">1927년</option>
+										<option value="1928" selected="">1928년</option>
+										<option value="1929" selected="">1929년</option>
+										<option value="1930" selected="">1930년</option>
+										<option value="1931" selected="">1931년</option>
+										<option value="1932" selected="">1932년</option>
+										<option value="1933" selected="">1933년</option>
+										<option value="1934" selected="">1934년</option>
+										<option value="1935" selected="">1935년</option>
+										<option value="1936" selected="">1936년</option>
+										<option value="1937" selected="">1937년</option>
+										<option value="1938" selected="">1938년</option>
+										<option value="1939" selected="">1939년</option>
+										<option value="1940" selected="">1940년</option>
+										<option value="1941" selected="">1941년</option>
+										<option value="1942" selected="">1942년</option>
+										<option value="1943" selected="">1943년</option>
+										<option value="1944" selected="">1944년</option>
+										<option value="1945" selected="">1945년</option>
+										<option value="1946" selected="">1946년</option>
+										<option value="1947" selected="">1947년</option>
+										<option value="1948" selected="">1948년</option>
+										<option value="1949" selected="">1949년</option>
+										<option value="1950" selected="">1950년</option>
+										<option value="1951" selected="">1951년</option>
+										<option value="1952" selected="">1952년</option>
+										<option value="1953" selected="">1953년</option>
+										<option value="1954" selected="">1954년</option>
+										<option value="1955" selected="">1955년</option>
+										<option value="1956" selected="">1956년</option>
+										<option value="1957" selected="">1957년</option>
+										<option value="1958" selected="">1958년</option>
+										<option value="1959" selected="">1959년</option>
+										<option value="1960" selected="">1960년</option>
+										<option value="1961" selected="">1961년</option>
+										<option value="1962" selected="">1962년</option>
+										<option value="1963" selected="">1963년</option>
+										<option value="1964" selected="">1964년</option>
+										<option value="1965" selected="">1965년</option>
+										<option value="1966" selected="">1966년</option>
+										<option value="1967" selected="">1967년</option>
+										<option value="1968" selected="">1968년</option>
+										<option value="1969" selected="">1969년</option>
+										<option value="1970" selected="">1970년</option>
+										<option value="1971" selected="">1971년</option>
+										<option value="1972" selected="">1972년</option>
+										<option value="1973" selected="">1973년</option>
+										<option value="1974" selected="">1974년</option>
+										<option value="1975" selected="">1975년</option>
+										<option value="1976" selected="">1976년</option>
+										<option value="1977" selected="">1977년</option>
+										<option value="1978" selected="">1978년</option>
+										<option value="1979" selected="">1979년</option>
+										<option value="1980" selected="">1980년</option>
+										<option value="1981" selected="">1981년</option>
+										<option value="1982" selected="">1982년</option>
+										<option value="1983" selected="">1983년</option>
+										<option value="1984" selected="">1984년</option>
+										<option value="1985" selected="">1985년</option>
+										<option value="1986" selected="">1986년</option>
+										<option value="1987" selected="">1987년</option>
+										<option value="1988" selected="">1988년</option>
+										<option value="1989" selected="">1989년</option>
+										<option value="1990" selected="">1990년</option>
+										<option value="1991" selected="">1991년</option>
+										<option value="1992" selected="">1992년</option>
+										<option value="1993" selected="">1993년</option>
+										<option value="1994" selected="">1994년</option>
+										<option value="1995" selected="">1995년</option>
+										<option value="1996" selected="">1996년</option>
+										<option value="1997" selected="">1997년</option>
+										<option value="1998" selected="">1998년</option>
+										<option value="1999" selected="">1999년</option>
+										<option value="2000" selected="">2000년</option>
+										<option value="2001" selected="">2001년</option>
+										<option value="2002" selected="">2002년</option>
+										<option value="2003" selected="">2003년</option>
+										<option value="2004" selected="">2004년</option>
+										<option value="2005" selected="">2005년</option>
+										<option value="2006" selected="">2006년</option>
+										<option value="2007" selected="">2007년</option>
+										<option value="2008" selected="">2008년</option>
+										<option value="2009" selected="">2009년</option>
+										<option value="2010" selected="">2010년</option>
+										<option value="2011" selected="">2011년</option>
+										<option value="2012" selected="">2012년</option>
+										<option value="2013" selected="">2013년</option>
+										<option value="2014" selected="">2014년</option>
+										<option value="2015" selected="">2015년</option>
+										<option value="2016" selected="">2016년</option>
+										<option value="2017" selected="">2017년</option>
+										<option value="2018" selected="">2018년</option>
+										<option value="2019" selected="">2019년</option>
+										<option value="2020" selected="">2020년</option>
+										<option value="2021" selected="">2021년</option>
+										<option value="2022" selected="">2022년</option>
+										<option value="2023" selected="">2023년</option>
+									</select>
+								</div>
+								<div class="select_wrap">
+									<select name="chMonth" id="chMonthJoin"
+										onchange="changeCalendar('#chYearJoin','#chMonthJoin','#chDayJoin')">
+										<option value="b" selected>-------</option>
+										<option value="1">1월</option>
+										<option value="2">2월</option>
+										<option value="3">3월</option>
+										<option value="4">4월</option>
+										<option value="5">5월</option>
+										<option value="6">6월</option>
+										<option value="7">7월</option>
+										<option value="8">8월</option>
+										<option value="9">9월</option>
+										<option value="10">10월</option>
+										<option value="11">11월</option>
+										<option value="12">12월</option>
+									</select>
+								</div>
+								<div class="select_wrap">
+									<select name="chDay" id="chDayJoin"
+										onchange="changeCalendar('#chYearJoin','#chMonthJoin','#chDayJoin')">
+										<option value="a" selected="">-------</option>
+										<option value="1">1일</option>
+										<option value="2">2일</option>
+										<option value="3">3일</option>
+										<option value="4">4일</option>
+										<option value="5">5일</option>
+										<option value="6">6일</option>
+										<option value="7">7일</option>
+										<option value="8">8일</option>
+										<option value="9">9일</option>
+										<option value="10">10일</option>
+										<option value="11">11일</option>
+										<option value="12">12일</option>
+										<option value="13">13일</option>
+										<option value="14">14일</option>
+										<option value="15">15일</option>
+										<option value="16">16일</option>
+										<option value="17">17일</option>
+										<option value="18">18일</option>
+										<option value="19">19일</option>
+										<option value="20">20일</option>
+										<option value="21">21일</option>
+										<option value="22">22일</option>
+										<option value="23">23일</option>
+										<option value="24">24일</option>
+										<option value="25">25일</option>
+										<option value="26">26일</option>
+										<option value="27">27일</option>
+										<option value="28">28일</option>
+										<option value="29">29일</option>
+										<option value="30">30일</option>
+										<option value="31">31일</option>
+									</select>
+								</div>
+							</div>
+						<strong style="color: #da291c;font-size: 1.4rem;">※ 만 14세 미만의 어린이는 가입이 불가능 합니다.</strong>
+					</div>
+				</div>
+				<div class="item_wrap">
+					<label class="item_label">성별</label>
+					<div class="item_content">
+						<div class="radio_wrap">
+							<label class="custom-radio1"> <input type="radio"
+								name="gender" id="genderJoin" checked  value="M"> <span class="checkmark"></span>
+								<div>
+									<div class="text">남성</div>
+								</div>
+							</label> <label class="custom-radio1"> <input type="radio"
+								name="gender" id="genderJoin" value="F"> <span class="checkmark"></span>
+								<div>
+									<div class="text">여성</div>
+								</div>
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end.input_info_wrap -->
+
+			<div class="agreement_wrap">
+				<div class="title_wrap">
+					<span class="title">약관 동의 및 마케팅 동의</span>
+				</div>
+				<ul class="agreement_list">
+					<li class="all"><label class="custom-checkbox"> <input
+							type="checkbox" id = idAllAgreeCheck onchange="clickAllAgree()"> <span class="checkmark"></span>
+							<div class="text">모든 약관 및 마케팅에 동의합니다.</div>
+					</label></li>
+					<li><label class="custom-checkbox"> <input
+							type="checkbox" id="idCheck0"> <span class="checkmark"></span>
+						<div class="text">본인은 만 14세 이상 입니다 (필수)</div>
+					</label>
+					<li><label class="custom-checkbox"> <input
+							type="checkbox" id="idCheck1"> <span class="checkmark"></span>
+							<div class="text">**** 이용약관 (필수)</div>
+					</label>
+					<li><label class="custom-checkbox"> <input
+							type="checkbox" id="idCheck2"> <span class="checkmark"></span>
+							<div class="text">개인정보 수집 및 이용 동의 (필수)</div>
+					</label>
+					<li><label class="custom-checkbox"> <input
+							type="checkbox" id="idCheck3"> <span class="checkmark"></span>
+							<div class="text">위치기반 서비스 이용약관 (필수)</div>
+					</label>
+				</ul>
+			</div>
+			<!-- end.agreement_wrap -->
+		</div>
+		<!-- end.member_form -->
+	</section>
+	<div class="mypage_member_btn_wrap">
+		<button class="btn_join" onclick="clickJoin()">가입완료</button>
+	</div>
+</div>
+<!--end.content_box-->
+</div>
+</html>

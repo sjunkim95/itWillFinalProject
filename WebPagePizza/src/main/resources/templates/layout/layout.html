@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>Papa Jones</title>
+        <link th:href="@{ /css/style.css }" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <div id="header_box">
+            <br>
+            <a th:href="@{ /view/main }"><h2>홈</h2></a>
+            <nav id="menu-bar">
+                <ul id="main_menu">
+                    <li>로그인</li>
+                    <li>회원가입</li>
+                    <li>이벤트</li>
+                    <li>매장찾기</li>
+                    <a th:href="@{ /view/cart }"><li class="cart"><ion-icon name="cart-outline"></ion-icon>장바구니 <span>0</span></li></a>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section id ='contents'>
+        <!-- /* 메인 컨텐트가 삽입될 위치 */ -->
+        <div layout:fragment="content"></div>
+    </section>
+    <!--  
+    <footer>
+        <h2>Copyright ©</h2>
+        <p>웹페이지 디자인: 김상준, 박건태 </br>ITWILL ㅈ</p>
+        
+        <div id="footer_box">
+            <div id="footer_sns">
+                <a href=""><img
+                     src="//imgcdn.pji.co.kr/pc/img/icon_facebook_color.png"
+                     alt="페이스북 아이콘" class="icon"></a>
+                <a href=""><img
+                    src="//imgcdn.pji.co.kr/pc/img/icon_twitter_color.png"
+                    alt="트위터 아이콘" class="icon"></a>
+                <a href=""><img
+                    src="//imgcdn.pji.co.kr/pc/img/icon_blog_color.png" alt="블로그 아이콘"
+                    class="icon"></a>
+                <a href=""><img
+                    src="//imgcdn.pji.co.kr/pc/img/icon_instagram_color.png"
+                    alt="인스타그램 아이콘" class="icon"></a>            
+            </div>
+            <div id="address">
+                <ul>
+                    <li>고객센터</li>
+                    <li>회사소개</li>
+                    <li>개인정보처리방침</li>
+                </ul>
+            </div>
+        </div>
+           
+    </footer>-->
+    
+    
+    <script type="module" th:src="@{https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js}"></script>
+    <!-- 페이지에 필요한 JS를 삽입할 위치 -->
+    <th:block layout:fragment="script"></th:block>
+</body>
+</html>

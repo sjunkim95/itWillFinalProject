@@ -1,0 +1,420 @@
+@charset "UTF-8";
+
+body{
+    font-family: verdana;
+}*{
+    margin:0;
+    padding:0;
+}
+
+header{
+    width: 100%;
+    height: 100px;
+    background-color: #CCD1D1 ;
+    margin: 0 auto;
+    color: #212F3C ;
+}
+
+#header_box{
+    width: 1140px;
+    height: 150px;
+    margin:0 auto;
+}
+
+#menu-bar {
+    float: right;
+}
+
+#main_menu li{
+    display: inline;
+    margin-left: 80px;
+}
+
+#main_menu {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+footer{
+    width: 100%;
+    height: 15vh;
+    background-color: #CCD1D1 ;
+    color:white;
+    position:fixed;
+    bottom:0;
+}
+
+footer h2{
+    position: absolute;
+    left:45%
+}
+
+footer p{
+    position:absolute;
+    left:40%;
+    bottom:70px;
+    color:black;
+}
+
+#footer_box{
+    width: 1140px;
+    height: 150px;
+    margin:0 auto;
+}
+
+#footer_sns{
+    float:left;
+    margin:45px 0 0 30px;
+}
+
+#footer_box #address {
+    float:right;
+    margin:45px 0 0 30px;
+}
+
+#contents {
+    width:1140px;
+    margin:0 auto;
+    margin-top: 30px;
+}
+
+.items{
+    float: left;
+    width:80%;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    padding:30px 20px;
+    grid-column-gap: 20px;
+    grid-row-gap: 30px;
+}
+
+.item img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: 0.2 ease;
+}
+
+.item img:hover{
+    transform: scale(1.04);
+}
+
+.sidebar{
+    float:right;
+    width:10%;
+    border-radius: 5px;
+    background-color: #eee;
+    margin-left:20px;
+    padding:15px;
+    text-align:center;
+    
+}
+.cartHead{
+    background-color:goldenrod;
+    border-radius: 3px;
+    height: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    
+}
+.cartFoot{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0px;
+    padding: 10px 0px;
+    border-top: 1px solid;
+    border: solid 1px red;
+
+}
+
+.cart-item{
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px;
+    background-color: white;
+    border-bottom: 1px solid #aaa;
+    border-radius: 3px;
+    margin: 2px 2px;
+    border: solid 1px red;
+}
+
+.row-img{
+    width: 10px;
+    height: 10px;
+    border-radius: 15px;
+    border: 1px solid goldenrod;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rowing{
+    max-width: 43px;
+    max-height: 43px;
+    border-radius: 50%;
+}
+
+.delete:hover{
+    cursor:pointer;
+    color:#333
+}
+
+/*이제 상세로*/
+
+.left{
+    width: 50%;
+    float:left;
+}
+
+.big-img img{
+    width: 250px;
+}
+
+.right{
+    float:center;
+}
+
+.pname{
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 50px;
+}
+
+.size{
+    display: flex;
+}
+
+.psize p{
+    font-size: 18px;
+    font-weight: 600;   
+}
+
+.psize{
+    width: 60px;
+    height: 30px;
+    border: 1px solid #ff5e00;
+    color: black;
+    text-align: center;
+    margin: 0 10px;
+}
+
+.psize.active{
+    border-width: 1.5px;
+    color: #ff5e00;
+    font-weight: 500;
+}
+
+.quantity{
+    display:flex;
+}
+.quantity p{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.quantity input{
+    width: 30px;
+    font-size: 17px;
+    font-weight: normal;
+}
+
+.btn-box{
+    display: flex;
+    margin: 20px 0;
+}
+
+.btn-box button{
+    font-size: 18px;
+    padding: 8px 25px;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+}
+
+.cart-btn{
+    background-color: #ff5e00;
+    margin-right: 10px;
+}
+
+.buy-btn{
+    background-color: #00aeff;
+}
+
+.cart-btn:hover{
+    background-color: #ff3c00;
+}
+.buy-btn:hover{
+    background-color: #0066ff;
+}
+
+/*-------------- Cart Page --------------*/
+
+.products-container{
+    max-width:650px;
+    justify-content: space-around;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.products-container ion-icon {
+    font-size: 25px;
+    color: blue;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.product-header {
+    width: 100%;
+    max-width: 650px;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 4px solid lightgrey;
+    margin: 0 auto;
+}
+
+.product-title{
+    width: 45%;
+}
+
+.price{
+    width: 15%;
+    border-bottom: 1px solid lightgrey;
+    display: flex;
+    align-items: center;
+}
+
+.quantity{
+    width: 30%;
+    border-bottom: 1px solid lightgrey;
+    display: flex;
+    align-items: center;
+}
+
+.total{
+    width: 10%;
+    border-bottom: 1px solid lightgrey;
+    display: flex;
+    align-items: center;
+}
+
+.product{
+    width: 45%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid lightgray;
+}
+
+.product img{
+    width: 50px;
+}
+
+.product ion-icon{
+    font-size: 25px;
+    color: blue;
+    margin-left: 10px;  
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.product-wrapper{
+    width:100%;
+    max-width: 650px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.basketTotalContainer{
+    display:flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.basketTotalTitle{
+    width:30%;
+}
+
+.basketTotal{
+    width:10%;
+}
+
+/* Cart Page End */
+
+/* 회원가입,로그인 css*/
+
+.login-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position : relative;
+    z-index:2;
+}
+.login-form h1{
+    font-size : 32px;
+    color: black;
+    text-align: center;
+    margin-bottom:60px;
+}
+.input-area{
+    width:400px;
+    position: relative;
+    margin-top : 20px;
+}
+input-area:first-child{
+    margin-top:0;
+}
+.input-area input{
+    width:100%;
+    padding : 20px 10px 10px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #999;
+    font-size: 20px;
+    color: black;
+    outline: none;
+}
+.input-area label{
+    position: auto; 
+    left: 10px;
+    top:15px;
+    font-size: 20px;
+    color : #999;
+    transition: all .5s ease;
+}
+.input-area input :focus + label {
+    top : -3px;
+}
+.btn-area{
+    margin-top: 30px;
+}
+.btn-area button{
+    width: 100%;
+    height: 50px;
+    background: skyblue;
+    color: black;
+    font-size: 20px;
+    border: none;
+    border-radius :30px;
+    cursor: pointer;
+}
+.caption{
+    margin-top :20px;
+    text-align: center;
+}
+.caption a{
+    font-size: 15px;
+    color: black;
+    text-decoration : none;
+}
+
+/* end 회원가입,로그인 css*/
