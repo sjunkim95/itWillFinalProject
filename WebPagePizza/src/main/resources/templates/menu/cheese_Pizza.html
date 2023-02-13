@@ -6,7 +6,7 @@
 <body>
 
     <div layout:fragment="content">
-    
+    <div class="detail-row">
         <div class="left">
             <div class="big-img">
                 <img th:src="@{/img/cheese-pizza.jpg}">
@@ -31,10 +31,21 @@
                 <button class="cart-btn">Add to Cart</button>
                 <button class="buy-btn">Buy Now</button>
             </div>
-            
-        
+        </div>
+        <div class="sidebar">
+            <a th:href="@{/view/cart}"><div class="cartHead"><p>장바구니</p></div></a>
+            <div class="cartItem">
+        </div>
+        <div class="cartFoot">
+            <h3>최종 가격</h3>
+            <h9 id="cartTotal"></h9>
         </div>
     </div>
+    
+    </div>  
+    </div>
+    
+    
     <th:block layout:fragment="script">
         <script th:src="@{ /js/main.js }"></script>
     </th:block>

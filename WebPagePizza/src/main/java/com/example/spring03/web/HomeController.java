@@ -13,7 +13,6 @@ public class HomeController {
     public String home() {
         log.info("home()");
         
-        
         return "/view/main";
 
     }

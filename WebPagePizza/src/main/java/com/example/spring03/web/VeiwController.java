@@ -40,4 +40,11 @@ public class VeiwController {
         return "/view/main";
         
     }
+    
+    @GetMapping("/address")
+    public String address() {
+        System.out.println("카카오 API 테스트");
+        
+        return "/view/address";
+    }
 }

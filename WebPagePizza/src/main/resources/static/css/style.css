@@ -76,6 +76,7 @@ footer p{
     width:1140px;
     margin:0 auto;
     margin-top: 30px;
+    border: 1px solid red;
 }
 
 .items{
@@ -113,12 +114,12 @@ footer p{
 .cartHead{
     background-color:goldenrod;
     border-radius: 3px;
-    height: 10px;
+    height: 20px;
     padding: 10px;
     margin-bottom: 20px;
     color: white;
     display: flex;
-    align-items: center;
+    text-align:center;
     
 }
 .cartFoot{
@@ -127,8 +128,6 @@ footer p{
     margin: 10px 0px;
     padding: 10px 0px;
     border-top: 1px solid;
-    border: solid 1px red;
-
 }
 
 .cart-item{
@@ -139,7 +138,6 @@ footer p{
     border-bottom: 1px solid #aaa;
     border-radius: 3px;
     margin: 2px 2px;
-    border: solid 1px red;
 }
 
 .row-img{
@@ -164,9 +162,11 @@ footer p{
 }
 
 /*이제 상세로*/
-
+.detail-row{
+    display:flex;
+}
 .left{
-    width: 50%;
+    width: 35%;
     float:left;
 }
 
@@ -176,6 +176,7 @@ footer p{
 
 .right{
     float:center;
+    width:50%
 }
 
 .pname{
@@ -244,6 +245,10 @@ footer p{
 
 .buy-btn{
     background-color: #00aeff;
+}
+
+.delete-btn{
+    background-color: tomato;
 }
 
 .cart-btn:hover{
