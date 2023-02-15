@@ -32,6 +32,27 @@ public class MenuController {
         return "/menu/italy-margherita";   
     }
     
+    @GetMapping("/bulgogi-pizza")
+    public String bulgogiPage() {
+        log.info("bulgogi-pizza()");
+        
+        return "/menu/bulgogi-pizza";   
+    }
+    
+    @GetMapping("/potato-pizza")
+    public String potatoPage() {
+        log.info("potato-pizza()");
+        
+        return "/menu/potato-pizza";   
+    }
+    
+    @GetMapping("/super-shrimp")
+    public String shrimpPage() {
+        log.info("super-shrimp()");
+        
+        return "/menu/super-shrimp";   
+    }
+    
     
     
 }

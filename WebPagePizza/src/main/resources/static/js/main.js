@@ -24,7 +24,28 @@
         tag: 'italy-margherita',
         price: 20000,
         inCart: 0
-    }
+        },
+        
+        {
+        name: 'bulgogi-pizza',
+        tag: 'bulgogi-pizza',
+        price: 13000,
+        inCart: 0
+        },
+        
+        {
+        name: 'potato-pizza',
+        tag: 'potato-pizza',
+        price: 16000,
+        inCart: 0
+        },
+        
+        {
+        name: 'super-shrimp',
+        tag: 'super-shrimp',
+        price: 22000,
+        inCart: 0
+        }
 ]
 
 for (let i = 0; i < carts.length; i++) {
