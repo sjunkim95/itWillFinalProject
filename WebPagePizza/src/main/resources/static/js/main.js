@@ -2,24 +2,24 @@
  * 
  */
 
-let carts = document.querySelectorAll('.add-cart')
-
-let products = [
-    {
-        name: 'peperoni-pizza',
-        tag: 'peperoni-pizza',
-        price: 17000,
-        inCart: 0
-    },
-
-    {
-        name: 'cheese-pizza',
-        tag: 'cheese-pizza',
-        price: 15000,
-        inCart: 0
-    },
-
-    {
+    let carts = document.querySelectorAll('.add-cart')
+    
+    let products = [
+        {
+            name: 'peperoni-pizza',
+            tag: 'peperoni-pizza',
+            price: 17000,
+            inCart: 0
+        },
+    
+        {
+            name: 'cheese-pizza',
+            tag: 'cheese-pizza',
+            price: 15000,
+            inCart: 0
+        },
+    
+        {
         name: 'italy-margherita',
         tag: 'italy-margherita',
         price: 20000,
@@ -149,6 +149,8 @@ function displayCart() {
     }
     manageQuantity();
     deleteButtons();
+    const btnBuyNow  = document.querySelector('buy-btn');
+    btnBuyNow.addEventListener('click', buyButton);
 
 }
 
@@ -310,3 +312,14 @@ function deleteButtons() {
         });
     }
 }
+
+
+function buyButton(){
+    console.log("버튼 눌리나")
+    let productNumbers = localStorage.getItem('cartNumbers');
+    let cartItems = localStorage.getItem('productsInCart');
+    cartItems = JSON.parse(cartItems);
+    let cartCost = localStorage.getItem('totalCost');
+    
+}
+

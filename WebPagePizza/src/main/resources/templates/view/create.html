@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:sec="http://thymeleaf.org/extras/spring-security"
+    layout:decorate="~{ layout/layout }">
+	
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport"
+            content="width=device-width, height=device-height, 
+                                 minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">     
+    </head>	
+
+    <div layout:fragment="content">
+        <form method="post" enctype="multipart/form-data">
+            <section class="container">
+                
+                <div class="WritngWrap">
+                    <div class="WritngHeader">
+                        <h2 style="display: inline-block;" class="title">이벤트 작성</h2>
+                            <div style="display: inline; float: right;">
+                                <input type="submit" id="btn_a" class="btn btn-success" style="margin-top: 30%;" value="　등록　" />
+                            </div>
+                    </div>
+                </div>
+               <hr>
+                           
+                <div class="WritngContainer">
+                    <div class="Writngeditor">
+                        <div class="ArticleWritingTitle">
+                            <div class="row">
+                                <div class="column_title">
+                                    <div class="row">
+                                        <div class="FlexableTextArea">
+                                            <textarea
+                                                placeholder=" 제목을 입력해 주세요."
+                                                class="textarea_input form-control mx-3"
+                                                id="title" name="title" autofocus
+                                                style="width: 100%; height: 50px; font-size: 20pt;"></textarea>
+                                        </div>
+                                        <br>  
+                                        <div
+                                            class="FlexableTextArea my-3">
+                                            <textarea
+                                                placeholder=" 내용을 입력해 주세요."
+                                                class="textarea_input form-control mx-3"
+                                                id="content" name="content"
+                                                style="width: 100%; height: 500px; font-size: 18px;"></textarea>
+                                        </div>
+                                        <hr>
+                                        <div class="my-2 mx-3" style="vertical-align: middle;">
+                                            <label for="author" class="form-label" style="font-size: 18pt;">작성자 : </label>
+                                            <input id="author" class="form-control" type="text" name="author" 
+                                            	   style="width: 15%; height: 30px; font-size: 18pt;" required />
+                                            <!-- ↑ 권한 문제로 삭제 한 코드 
+                                                        th:value="${ #authentication.name }" -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                        
+            </section>
+        </form>
+    </div>
+    
+    <th:block layout:fragment="script">
+        <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+    </th:block>
+
+</html>

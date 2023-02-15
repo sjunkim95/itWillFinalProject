@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    
 <head>
     <meta charset="utf-8" />
     <meta name="viewport"
@@ -16,9 +17,10 @@
             <a th:href="@{ /view/main }"><h2>홈</h2></a>
             <nav id="menu-bar">
                 <ul id="main_menu">
-                    <li>로그인</li>
-                    <li>회원가입</li>
-                    <li>이벤트</li>
+                    <li sec:authorize="isAnonymous()"><a th:href="@{ /view/login }">로그인</a></li>
+                    <li sec:authorize="isAuthenticated()"><a th:href="@{ /logout}">로그아웃</a></li>
+                    <li sec:authorize="isAnonymous()"><a th:href="@{ /view/signup }">회원가입</a></li>
+                    <a th:href="@{/view/list}"><li>이벤트</li></a>
                     <a th:href="@{ /view/address }"><li>매장찾기</li></a>
                     <a th:href="@{ /view/cart }"><li class="cart"><ion-icon name="cart-outline"></ion-icon>장바구니 <span>0</span></li></a>
                 </ul>

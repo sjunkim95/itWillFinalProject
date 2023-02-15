@@ -26,11 +26,11 @@ public class VeiwController {
         return "/view/login";  
     }
 
-    @GetMapping("/singup")
+    @GetMapping("/signup")
     public String singup() {
         log.info("singup()");
         
-        return "/view/singup";  
+        return "/view/signup";  
     }
     
     @GetMapping("/main")

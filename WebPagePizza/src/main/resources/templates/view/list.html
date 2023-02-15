@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://thymeleaf.org/extras/spring-security"
+	layout:decorate="~{ layout/layout }">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+	<div layout:fragment="content">
+
+		<!-- 탭 이름 표시 -->
+		<div align="center">
+			<h2 class="title">이벤트 / 할인</h2>
+		</div>
+		<form th:action="@{ /view/create }">
+			<button class="btn btn-success" id="btn_a" type="submit" style="float: right ">
+				<span>　작성　</span>
+			</button>
+		</form>
+		
+		<br><hr/>
+
+		<table class="w3-table-all w3-hoverable" 
+			style="margin-left: auto; margin-right: auto; width: 100%">
+			<thead class="tbodyh">
+				<tr class="w3-teal">
+					<th style="width: 7%; text-align: center">No.</th>
+					<th style="width: 63%; text-align: center">이벤트 / 할인</th>
+					<th style="width: 12%; text-align: center">작성자</th>
+					<th style="width: 18%; text-align: center">게시일</th>
+				</tr>
+			</thead>
+			<tbody class="tbodyb" style="height: 100%">    
+				<tr th:each="post : ${ list }">
+					<td style="text-align: center;" th:text="${ post.id }"></td>
+					<td style="text-align: center;" >
+						<a th:href="@{ /view/detail?id={id} (id = ${ post.id }) }"
+						   th:text="${ post.title }"></a></td>
+					<td style="text-align: center;" th:text="${ post.author }"></td>
+					<td style="text-align: center;"
+						th:text="${ #temporals.format(post.modifiedTime, 'yyyy-MM-dd') }"></td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<nav aria-label="Page navigation example">
+			<ul style="text-align: center;">
+				
+				<li class="pagination" th:classappend="${i == list.pageable.pageNumber + 1} ? 'disabled'"
+					th:each="i : ${#numbers.sequence(startPage, endPage)}">
+					<a class="pagination" th:href="@{/view/list(page=${i - 1})}" th:text="${i}">
+					1</a></li>
+				
+			</ul>
+		</nav>
+
+		
+	</div>
+</body>
+</html>
